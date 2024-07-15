@@ -4,7 +4,7 @@ package main
 import (
 	"fmt"
 
-	"github.com/koding/multiconfig"
+	"github.com/azhao1981/multiconfig"
 )
 
 type (

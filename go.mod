@@ -1,4 +1,4 @@
-module multiconfig
+module github.com/azhao1981/multiconfig
 
 go 1.22
 
