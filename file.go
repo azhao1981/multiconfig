@@ -2,11 +2,11 @@ package multiconfig
 
 import (
 	"encoding/json"
-	"errors"
 	"io"
-	"io/ioutil"
 	"os"
 	"path/filepath"
+
+	"github.com/pkg/errors"
 
 	"github.com/BurntSushi/toml"
 	yaml "gopkg.in/yaml.v2"
@@ -46,7 +46,7 @@ func (t *TOMLLoader) Load(s interface{}) error {
 		return ErrSourceNotSet
 	}
 
-	if _, err := toml.DecodeReader(r, s); err != nil {
+	if _, err := toml.NewDecoder(r).Decode(s); err != nil {
 		return err
 	}
 
@@ -107,7 +107,7 @@ func (y *YAMLLoader) Load(s interface{}) error {
 		return ErrSourceNotSet
 	}
 
-	data, err := ioutil.ReadAll(r)
+	data, err := io.ReadAll(r)
 	if err != nil {
 		return err
 	}
@@ -133,7 +133,7 @@ func getConfig(path string) (*os.File, error) {
 
 	f, err := os.Open(path)
 	if os.IsNotExist(err) {
-		return nil, ErrFileNotFound
+		return nil, errors.Wrap(ErrFileNotFound, path)
 	}
 	return f, err
 }

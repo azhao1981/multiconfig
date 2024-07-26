@@ -7,15 +7,14 @@ import (
 
 type (
 	Server struct {
-		Name       string `required:"true"`
-		Port       int    `default:"6060"`
-		ID         int64
-		Labels     []int
-		Enabled    bool
-		Users      []string
-		Postgres   Postgres
-		unexported string
-		Interval   time.Duration
+		Name     string `required:"true"`
+		Port     int    `default:"6060"`
+		ID       int64
+		Labels   []int
+		Enabled  bool
+		Users    []string
+		Postgres Postgres
+		Interval time.Duration
 	}
 
 	// Postgres holds Postgresql database related configuration
@@ -25,7 +24,6 @@ type (
 		Hosts             []string `required:"true"`
 		DBName            string   `default:"configdb"`
 		AvailabilityRatio float64
-		unexported        string
 	}
 
 	TaggedServer struct {

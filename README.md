@@ -97,6 +97,12 @@ Set flag variable before multiconfig
     m := multiconfig.NewWithPath("cti.toml")
 ```
 
+## Publishing
+
+```bash
+go list -m  github.com/azhao1981/multiconfig@v1.0.1
+```
+
 ## License
 
 The MIT License (MIT) - see [LICENSE](/LICENSE) for more details
